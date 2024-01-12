@@ -4,17 +4,16 @@ from fabric.api import env
 from fabric.api import put
 from fabric.api import run
 
-env.hosts = ["104.196.168.90", "35.196.46.172"]
-
+env.hosts = ["54.173.146.48", "100.26.167.35"]
 
 def do_deploy(archive_path):
-    """Distributes archive to web.
+    """Function distributes the archive to web.
 
     Args:
         archive_path (str): Path of archive to distribute.
     Returns:
-        If the file doesn't exist at archive_path or an error occurs - False.
-        O/W - True.
+        If the file doesn't exist at archive_path or an error - False.
+        Otherwise - True.
     """
     if os.path.isfile(archive_path) is False:
         return False

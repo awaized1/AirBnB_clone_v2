@@ -6,11 +6,11 @@ from fabric.api import local
 from fabric.api import put
 from fabric.api import run
 
-env.hosts = ["104.196.168.90", "35.196.46.172"]
+env.hosts = ["54.173.146.48", "100.26.167.35"]
 
 
 def do_pack():
-    """Creates tar gzipped archive of directory web_static."""
+    """Function creates .tgz archive of the web_static."""
     dt = datetime.utcnow()
     file = "versions/web_static_{}{}{}{}{}{}.tgz".format(dt.year,
                                                          dt.month,
@@ -27,13 +27,13 @@ def do_pack():
 
 
 def do_deploy(archive_path):
-    """Distributes archive to web server.
+    """Function distributes archive to the web server.
 
     Args:
-        archive_path (str): The path of archive to distribute.
+        archive_path (str): Path of archive to distribute.
     Returns:
-        If the file doesn't exist at archive_path or error - False.
-        O/W - True.
+        If file doesn't exist at archive_path or error - False.
+        Otherwise - True.
     """
     if os.path.isfile(archive_path) is False:
         return False
@@ -68,7 +68,7 @@ def do_deploy(archive_path):
 
 
 def deploy():
-    """Creates and distributes archive to web."""
+    """Function creates then distributes archive to web."""
     file = do_pack()
     if file is None:
         return False
